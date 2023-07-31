@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float VRotation;
 
     [SerializeField] Rigidbody rb;
-    private float moveSpeed = 4f;
+    private float moveSpeed = 10f;
     [SerializeField] LayerMask ground;
     private float jumpForce = 450f;
     [SerializeField] Transform groundCheck;
