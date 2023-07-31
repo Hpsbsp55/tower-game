@@ -23,8 +23,9 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        float lookX = Input.GetAxis("Mouse X") * lookSpeed;
-        float lookY = Input.GetAxis("Mouse Y") * lookSpeed;
+        float lookX = Input.GetAxisRaw("Mouse X") * lookSpeed; //get mouse movement horizontal
+        float lookY = Input.GetAxisRaw("Mouse Y") * lookSpeed; //get mouse movement vertical
+        Debug.Log("X: " + lookX + "\nY:" + lookY);
         VRotation -= lookY;
         VRotation = Mathf.Clamp(VRotation, -90f, 90f);
         transform.localEulerAngles = Vector3.right * VRotation;
@@ -35,7 +36,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
     void FixedUpdate() {
-        Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * moveSpeed;
+        Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
         rb.velocity = new Vector3(movementVelocity.x, rb.velocity.y, movementVelocity.z);
         //Debug.Log(Physics.CheckSphere(player.position, player.localScale.y + 0.1f, ground));
         if(isJumping) {
