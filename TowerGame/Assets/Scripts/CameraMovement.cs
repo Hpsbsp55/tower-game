@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float VRotation;
 
     [SerializeField] Rigidbody rb;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 3f;
     [SerializeField] LayerMask ground;
     private float jumpForce = 175f;
     [SerializeField] Transform groundCheck;
@@ -23,7 +23,8 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        float lookX = Input.GetAxisRaw("Mouse X") * lookSpeed; //get mouse movement horizontal
+        float lookX = 0;
+        lookX = Input.GetAxisRaw("Mouse X") * lookSpeed; //get mouse movement horizontal
         float lookY = Input.GetAxisRaw("Mouse Y") * lookSpeed; //get mouse movement vertical
         Debug.Log("X: " + lookX + "\nY:" + lookY);
         VRotation -= lookY;
