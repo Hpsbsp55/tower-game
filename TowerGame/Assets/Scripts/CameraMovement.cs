@@ -18,28 +18,29 @@ public class CameraMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked; //confines cursor to window
         Cursor.visible = false; //makes cursor invisible
-        //rb = player.gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        float lookX = 0;
-        lookX = Input.GetAxisRaw("Mouse X") * lookSpeed; //get mouse movement horizontal
+        CheckInput();
+    }
+    void FixedUpdate() {
+        Move();
+    }
+    void CheckInput() {
+        float lookX = Input.GetAxisRaw("Mouse X") * lookSpeed; //get mouse movement horizontal
         float lookY = Input.GetAxisRaw("Mouse Y") * lookSpeed; //get mouse movement vertical
-        Debug.Log("X: " + lookX + "\nY:" + lookY);
         VRotation -= lookY;
         VRotation = Mathf.Clamp(VRotation, -90f, 90f);
         transform.localEulerAngles = Vector3.right * VRotation;
         player.transform.Rotate(Vector3.up * lookX);
         if(Input.GetKeyDown("space") && Physics.CheckSphere(player.position, player.localScale.y + 0.1f, ground)) {
             isJumping = true;
-            Debug.Log("Jumping");
         }
     }
-    void FixedUpdate() {
+    void Move() {
         Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
         rb.velocity = new Vector3(movementVelocity.x, rb.velocity.y, movementVelocity.z);
-        //Debug.Log(Physics.CheckSphere(player.position, player.localScale.y + 0.1f, ground));
         if(isJumping) {
             rb.AddForce(transform.up * jumpForce);
             isJumping = !isJumping;
