@@ -9,9 +9,9 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float VRotation;
 
     [SerializeField] Rigidbody rb;
-    private float moveSpeed = 3f;
+    private float moveSpeed = 4f;
     [SerializeField] LayerMask ground;
-    private float jumpForce = 175f;
+    private float jumpForce = 450f;
     [SerializeField] Transform groundCheck;
     private bool isJumping = false;
     void Start()
@@ -39,7 +39,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
     void Move() {
-        Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
+        Vector3 movementVelocity = Vector3.Normalize(player.transform.forward * Input.GetAxisRaw("Vertical") + player.transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
         rb.velocity = new Vector3(movementVelocity.x, rb.velocity.y, movementVelocity.z);
         if(isJumping) {
             rb.AddForce(Vector3.up * jumpForce);
