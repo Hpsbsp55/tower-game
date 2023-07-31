@@ -14,7 +14,7 @@ public class ObjectPickup : MonoBehaviour
 
     private void Update()
     {
-        ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        ReachDist();
         PickupCheck();
         if (holdingObj)
         {
@@ -22,6 +22,10 @@ public class ObjectPickup : MonoBehaviour
         }
     }
 
+    public void ReachDist()
+    {
+        ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+    }
     void PickupCheck()
     {
         if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hitInfo, reachDist) && hitInfo.transform.gameObject.tag == "Pickup")
