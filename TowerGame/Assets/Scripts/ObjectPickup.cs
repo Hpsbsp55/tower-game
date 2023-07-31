@@ -10,16 +10,19 @@ public class ObjectPickup : MonoBehaviour
 {
     public Camera Camera;
     public Transform handLocation;
+    [SerializeField] Material highlight;
     GameObject heldItem;
     bool holdingObj = false;
     int reachDist = 3;
     Ray ray;
     RaycastHit hitInfo;
+    Material defaultMat;
+    GameObject pickup;
 
     private void Update()
     {
         ReachDist();
-        PickupCheck();
+        InteractCheck();
         if (holdingObj)
         {
             PutDownCheck();
@@ -30,21 +33,36 @@ public class ObjectPickup : MonoBehaviour
     {
         ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
     }
-    void PickupCheck()
+    void InteractCheck()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hitInfo, reachDist) && hitInfo.transform.gameObject.tag == "Pickup")
+        bool inReach = Physics.Raycast(ray, out hitInfo, reachDist);
+        if (inReach && (hitInfo.transform.gameObject.tag == "Pickup" || hitInfo.transform.gameObject.tag == "Interactive"))
+        {
+            pickup = hitInfo.transform.gameObject;
+            pickup.GetComponent<Pickup>().HighlightMat();
+        }
+        else
+        {
+            if(pickup != null)
+            {
+                pickup.GetComponent<Pickup>().DefaultMat();
+            }
+            pickup = null;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
         {
             heldItem = hitInfo.transform.gameObject;
-            hitInfo.transform.parent = handLocation;
-            hitInfo.collider.isTrigger = true;
-            hitInfo.rigidbody.isKinematic = true;
-            hitInfo.rigidbody.velocity = new Vector3(0, 0, 0);
-            hitInfo.transform.localPosition = new Vector3(0, 0, 0);
+            pickup.transform.parent = handLocation;
+            pickup.GetComponent<Collider>().isTrigger = true;
+            pickup.GetComponent<Rigidbody>().isKinematic = true;
+            pickup.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            pickup.transform.localPosition = new Vector3(0, 0, 0);
             holdingObj = true;
         } 
-        else if(Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hitInfo, reachDist) && hitInfo.transform.gameObject.tag == "Interactive")
+        else if(Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
         {
-            hitInfo.transform.gameObject.GetComponent<Interactive>().Interact();
+            pickup.GetComponent<Interactive>().Interact();
         }
     }
 

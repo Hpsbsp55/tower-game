@@ -23,17 +23,14 @@ public class Chest : Interactive
         Open();
     }
     public override void Interact() {
-        Debug.Log("2");
         opening = true;
     }
     void Open() {
         //assuming observer is facing positive Z and the front of the chest is facing negative Z
         if(opening && t <= 3f) {
-            Debug.Log("3");
             lid.RotateAround(new Vector3(box.position.x, box.position.y + bounds.size.y / 2, box.position.z + bounds.size.z / 2), transform.right, 30 * Time.deltaTime);
             t += Time.deltaTime;
         } else if(opening) {
-            Debug.Log("4");
             opening = !opening;
         }
     }
