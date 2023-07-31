@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
     void FixedUpdate() {
-        Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * moveSpeed;
+        Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
         rb.velocity = new Vector3(movementVelocity.x, rb.velocity.y, movementVelocity.z);
         //Debug.Log(Physics.CheckSphere(player.position, player.localScale.y + 0.1f, ground));
         if(isJumping) {
