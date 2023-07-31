@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public abstract class Interactive : MonoBehaviour
+{
+    public abstract void Interact();
+}
 
 public class ObjectPickup : MonoBehaviour
 {
@@ -37,6 +41,10 @@ public class ObjectPickup : MonoBehaviour
             hitInfo.rigidbody.velocity = new Vector3(0, 0, 0);
             hitInfo.transform.localPosition = new Vector3(0, 0, 0);
             holdingObj = true;
+        } 
+        else if(Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hitInfo, reachDist) && hitInfo.transform.gameObject.tag == "Interactive")
+        {
+            hitInfo.transform.gameObject.GetComponent<Interactive>().Interact();
         }
     }
 
