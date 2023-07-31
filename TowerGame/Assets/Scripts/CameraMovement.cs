@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour
         Vector3 movementVelocity = Vector3.Normalize(transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")) * moveSpeed;
         rb.velocity = new Vector3(movementVelocity.x, rb.velocity.y, movementVelocity.z);
         if(isJumping) {
-            rb.AddForce(transform.up * jumpForce);
+            rb.AddForce(Vector3.up * jumpForce);
             isJumping = !isJumping;
         }
     }
