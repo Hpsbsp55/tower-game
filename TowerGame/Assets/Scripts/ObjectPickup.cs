@@ -19,12 +19,7 @@ public class ObjectPickup : MonoBehaviour
     Material defaultMat;
     GameObject pickup;
     GameObject heldObj;
-    [SerializeField] List<Transform> children;
 
-    private void Start()
-    {
-        children = new List<Transform>();
-    }
     private void Update()
     {
         ReachDist();
@@ -42,44 +37,34 @@ public class ObjectPickup : MonoBehaviour
     void InteractCheck()
     {
         bool inReach = Physics.Raycast(ray, out hitInfo, reachDist);
+        GameObject temp = pickup;
         if (inReach && (hitInfo.transform.gameObject.tag == "Pickup" || hitInfo.transform.gameObject.tag == "Interactive"))
         {
-
-            pickup = hitInfo.transform.gameObject;
-            if (pickup.GetComponent<InteractiveObj>().isActive == false)
+            if (pickup != null && hitInfo.transform.gameObject != pickup)
             {
-                pickup.GetComponent<InteractiveObj>().isActive = true;
-                foreach (Transform child in pickup.transform)
+                foreach (Pickup childPickup in pickup.GetComponentsInChildren<Pickup>())
                 {
-                    children.Add(child);
-                    child.GetComponent<Pickup>().HighlightMat();
+                    childPickup.DefaultMat();
                 }
-                Debug.Log(children.Count);
-                if(children.Count == 0)
-                    pickup.GetComponent<Pickup>().HighlightMat();
+            }
+            pickup = hitInfo.transform.gameObject;
+            foreach (Pickup childPickup in pickup.GetComponentsInChildren<Pickup>())
+            {
+                childPickup.HighlightMat();
             }
         }
         else
-        {
-            if(pickup != null && pickup.GetComponent<InteractiveObj>().isActive == true)
             {
-                pickup.GetComponent<InteractiveObj>().isActive = false;
-                foreach (Transform child in pickup.transform)
+            if(pickup != null)
+            {
+                foreach (Pickup childPickup in pickup.GetComponentsInChildren<Pickup>())
                 {
-                    if(child != pickup.transform)
-                    {
-                        child.GetComponent<Pickup>().DefaultMat();
-                    }
-                    //children.Add(child);
+                    childPickup.DefaultMat();
                 }
-                if (children.Count == 0)
-                    pickup.GetComponent<Pickup>().DefaultMat();
-                children.Clear();
             }
-            //pickup = null;
+            pickup = null;
         }
-        //Debug.Log(pickup);
-        if (!holdingObj && Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
+        if (pickup != null && !holdingObj && Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
         {
             pickup.transform.parent = handLocation;
             pickup.GetComponent<Collider>().isTrigger = true;
@@ -89,7 +74,7 @@ public class ObjectPickup : MonoBehaviour
             heldObj = pickup;
             holdingObj = true;
         } 
-        else if(Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
+        else if(pickup != null && Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
         {
             pickup.GetComponent<Interactive>().Interact();
         }
@@ -105,7 +90,7 @@ public class ObjectPickup : MonoBehaviour
             heldObj.transform.parent = null;
             heldObj.transform.position = hit.point;
             heldObj.transform.up = hit.normal;
-            heldObj.transform.localPosition += Vector3.up * 0.5f * pickup.transform.lossyScale.y;
+            heldObj.transform.localPosition += Vector3.up * 0.5f * heldObj.transform.lossyScale.y;
             heldObj.GetComponent<Collider>().isTrigger = false;
             heldObj.GetComponent<Rigidbody>().isKinematic = false;
         }
