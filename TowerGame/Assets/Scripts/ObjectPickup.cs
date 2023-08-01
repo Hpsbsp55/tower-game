@@ -79,7 +79,7 @@ public class ObjectPickup : MonoBehaviour
             //pickup = null;
         }
         //Debug.Log(pickup);
-        if (Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
+        if (!holdingObj && Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
         {
             pickup.transform.parent = handLocation;
             pickup.GetComponent<Collider>().isTrigger = true;
