@@ -11,9 +11,8 @@ public class ObjectPickup : MonoBehaviour
     public Camera Camera;
     public Transform handLocation;
     [SerializeField] Material highlight;
-    GameObject heldItem;
     bool holdingObj = false;
-    int reachDist = 5;
+    int reachDist = 3;
     Ray ray;
     RaycastHit hitInfo;
     Material defaultMat;
@@ -47,12 +46,11 @@ public class ObjectPickup : MonoBehaviour
             {
                 pickup.GetComponent<Pickup>().DefaultMat();
             }
-            pickup = null;
+            //pickup = null;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
         {
-            heldItem = hitInfo.transform.gameObject;
             pickup.transform.parent = handLocation;
             pickup.GetComponent<Collider>().isTrigger = true;
             pickup.GetComponent<Rigidbody>().isKinematic = true;
@@ -69,25 +67,24 @@ public class ObjectPickup : MonoBehaviour
     void PutDownCheck()
     {
         ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        //int maxDist = Mathf.Max(reachDist, )
         RaycastHit hit;
         if (holdingObj && Input.GetKeyDown(KeyCode.F) && Physics.Raycast(ray, out hit, reachDist))
         {
             holdingObj = false;
-            heldItem.transform.parent = null;
-            heldItem.transform.position = hit.point;
-            heldItem.transform.up = hit.normal;
-            heldItem.transform.localPosition += Vector3.up * 0.5f * heldItem.transform.lossyScale.y;
-            heldItem.GetComponent<Collider>().isTrigger = false;
-            heldItem.GetComponent<Rigidbody>().isKinematic = false;
+            pickup.transform.parent = null;
+            pickup.transform.position = hit.point;
+            pickup.transform.up = hit.normal;
+            pickup.transform.localPosition += Vector3.up * 0.5f * pickup.transform.lossyScale.y;
+            pickup.GetComponent<Collider>().isTrigger = false;
+            pickup.GetComponent<Rigidbody>().isKinematic = false;
         }
         else if(holdingObj && Input.GetKeyDown(KeyCode.F) && !Physics.Raycast(ray, out hit, reachDist))
         {
             holdingObj = false;
-            heldItem.transform.parent = null;
-            heldItem.transform.position = Camera.transform.position + Camera.transform.forward * reachDist;
-            heldItem.GetComponent<Collider>().isTrigger = false;
-            heldItem.GetComponent<Rigidbody>().isKinematic = false;
+            pickup.transform.parent = null;
+            pickup.transform.position = Camera.transform.position + Camera.transform.forward * reachDist;
+            pickup.GetComponent<Collider>().isTrigger = false;
+            pickup.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }
