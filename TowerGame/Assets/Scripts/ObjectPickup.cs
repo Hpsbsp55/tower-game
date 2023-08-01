@@ -76,7 +76,7 @@ public class ObjectPickup : MonoBehaviour
                     pickup.GetComponent<Pickup>().DefaultMat();
                 children.Clear();
             }
-            pickup = null;
+            //pickup = null;
         }
         //Debug.Log(pickup);
         if (Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
