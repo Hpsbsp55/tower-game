@@ -13,7 +13,7 @@ public class ObjectPickup : MonoBehaviour
     public Transform handLocation;
     [SerializeField] Material highlight;
     bool holdingObj = false;
-    int reachDist = 3;
+    int reachDist = 5;
     Ray ray;
     RaycastHit hitInfo;
     Material defaultMat;
@@ -78,7 +78,7 @@ public class ObjectPickup : MonoBehaviour
             }
             //pickup = null;
         }
-
+        //Debug.Log(pickup);
         if (Input.GetKeyDown(KeyCode.E) && inReach && pickup.tag == "Pickup")
         {
             pickup.transform.parent = handLocation;
