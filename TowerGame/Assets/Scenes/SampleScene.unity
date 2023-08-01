@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 66395963}
   - component: {fileID: 66395964}
   - component: {fileID: 66395965}
+  - component: {fileID: 66395966}
   m_Layer: 3
   m_Name: GameObject
   m_TagString: Interactive
@@ -183,6 +184,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.001, y: 1.251, z: 1.001}
   m_Center: {x: 0, y: 0.125, z: 0}
+--- !u!114 &66395966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66395962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16487a3fe954e643ad06197dc76c8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!1 &239725676
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +240,7 @@ GameObject:
   - component: {fileID: 361683087}
   - component: {fileID: 361683086}
   - component: {fileID: 361683085}
+  - component: {fileID: 361683088}
   m_Layer: 3
   m_Name: ChestLid
   m_TagString: Untagged
@@ -311,6 +326,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361683083}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &361683088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361683083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35386d062808e1b4da9ace45585c5747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
 --- !u!1 &663903317
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +830,7 @@ MonoBehaviour:
   Camera: {fileID: 963194227}
   handLocation: {fileID: 239725677}
   highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
+  children: []
 --- !u!65 &912750498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -967,6 +996,7 @@ GameObject:
   - component: {fileID: 1127741476}
   - component: {fileID: 1127741480}
   - component: {fileID: 1127741481}
+  - component: {fileID: 1127741482}
   m_Layer: 6
   m_Name: PickUpObj
   m_TagString: Pickup
@@ -1045,7 +1075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127741475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 0.5, z: 1.54}
+  m_LocalPosition: {x: 1.99, y: 0.5, z: 9.08}
   m_LocalScale: {x: 0.59341, y: 0.59341, z: 0.59341}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1081,6 +1111,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
+--- !u!114 &1127741482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127741475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16487a3fe954e643ad06197dc76c8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!1 &1703347877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1136,7 @@ GameObject:
   - component: {fileID: 1703347881}
   - component: {fileID: 1703347880}
   - component: {fileID: 1703347879}
+  - component: {fileID: 1703347882}
   m_Layer: 3
   m_Name: ChestBox
   m_TagString: Untagged
@@ -1178,3 +1222,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703347877}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1703347882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703347877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35386d062808e1b4da9ace45585c5747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
