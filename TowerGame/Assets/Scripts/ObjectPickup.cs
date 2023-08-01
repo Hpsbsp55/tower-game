@@ -12,7 +12,7 @@ public class ObjectPickup : MonoBehaviour
     public Camera Camera;
     public Transform handLocation;
     [SerializeField] Material highlight;
-    bool holdingObj = false;
+    public bool holdingObj = false;
     int reachDist = 5;
     Ray ray;
     RaycastHit hitInfo;
