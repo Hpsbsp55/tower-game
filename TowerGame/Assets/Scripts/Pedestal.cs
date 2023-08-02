@@ -19,7 +19,7 @@ public class Pedestal : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if(!activated && items.Contains(other.gameObject)) {
             item = other.gameObject;
-            item.transform.position = new Vector3(transform.position.x, transform.position.y + gameObject.GetComponent<Collider>().bounds.size.y / 2 + 0.5f, transform.position.z);
+            item.transform.position = new Vector3(transform.position.x, transform.position.y + transform.Find("Teleport").position.y + 0.5f, transform.position.z);
             item.GetComponent<Rigidbody>().isKinematic = true;
             item.transform.parent = this.transform;
             item.tag = "Untagged";

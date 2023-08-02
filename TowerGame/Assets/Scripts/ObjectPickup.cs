@@ -13,7 +13,7 @@ public class ObjectPickup : MonoBehaviour
     public Transform handLocation;
     [SerializeField] Material highlight;
     public bool holdingObj = false;
-    int reachDist = 3;
+    int reachDist = 5;
     Ray ray;
     RaycastHit hitInfo;
     Material defaultMat;
