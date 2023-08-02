@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
     private float moveSpeed = 10f;
     [SerializeField] LayerMask ground;
-    private float jumpForce = 450f;
+    private float jumpForce = 550f;
     [SerializeField] Transform groundCheck;
     private bool isJumping = false;
     void Start()
@@ -34,7 +34,7 @@ public class CameraMovement : MonoBehaviour
         VRotation = Mathf.Clamp(VRotation, -90f, 90f);
         transform.localEulerAngles = Vector3.right * VRotation;
         player.transform.Rotate(Vector3.up * lookX);
-        if(Input.GetKeyDown("space") && Physics.CheckSphere(player.position, player.localScale.y + 0.1f, ground)) {
+        if(Input.GetKeyDown("space") && Physics.CheckSphere(player.position, player.lossyScale.y + 0.1f, ground)) {
             isJumping = true;
         }
     }

@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 2556162233043287597}
   - component: {fileID: 2662728537414928751}
   - component: {fileID: 2662728537414928750}
+  - component: {fileID: 8748264479008900336}
   m_Layer: 0
   m_Name: pedastal
   m_TagString: Untagged
@@ -276,6 +277,19 @@ MonoBehaviour:
   - {fileID: 0}
   index: 0
   player: {fileID: 0}
+--- !u!65 &8748264479008900336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896518997755307159}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009, y: 0.02301675, z: 0.009}
+  m_Center: {x: 0, y: 0.011546025, z: 0}
 --- !u!1 &3644831756852425654
 GameObject:
   m_ObjectHideFlags: 0

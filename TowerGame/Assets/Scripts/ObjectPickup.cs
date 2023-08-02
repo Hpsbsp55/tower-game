@@ -72,6 +72,8 @@ public class ObjectPickup : MonoBehaviour
             pickup.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             pickup.transform.localPosition = new Vector3(0, 0, 0);
             heldObj = pickup;
+            /*heldObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
+            heldObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;*/
             holdingObj = true;
         } 
         else if(pickup != null && Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
@@ -90,7 +92,7 @@ public class ObjectPickup : MonoBehaviour
             heldObj.transform.parent = null;
             heldObj.transform.position = hit.point;
             heldObj.transform.up = hit.normal;
-            heldObj.transform.localPosition += Vector3.up * 0.5f * heldObj.transform.lossyScale.y;
+            heldObj.transform.localPosition += Vector3.up * 0.5f * heldObj.transform.lossyScale.y / 150;
             heldObj.GetComponent<Collider>().isTrigger = false;
             heldObj.GetComponent<Rigidbody>().isKinematic = false;
         }

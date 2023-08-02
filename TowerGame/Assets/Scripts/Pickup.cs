@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     Material defaultMat;
     [SerializeField] Material highlight;
+    [SerializeField] GameObject player;
     private void Start()
     {
         defaultMat = GetComponent<MeshRenderer>().material;
@@ -19,4 +20,9 @@ public class Pickup : MonoBehaviour
     {
         gameObject.GetComponent<MeshRenderer>().material = highlight;
     }
+    /*void OnTriggerEnter(Collider other) {
+        if(!player.GetComponent<ObjectPickup>().holdingObj && other.gameObject != player) {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
+    // }*/
 }
