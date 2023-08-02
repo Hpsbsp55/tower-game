@@ -744,7 +744,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &827294822
 BoxCollider:
@@ -972,6 +972,7 @@ MonoBehaviour:
   Camera: {fileID: 963194227}
   handLocation: {fileID: 239725677}
   highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
+  holdingObj: 0
 --- !u!65 &912750498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1237,7 +1238,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1127741481
 MonoBehaviour:
