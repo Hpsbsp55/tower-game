@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
 {
     Material defaultMat;
     [SerializeField] Material highlight;
-    [SerializeField] GameObject player;
+    //[SerializeField] GameObject player;
     private void Start()
     {
         defaultMat = GetComponent<MeshRenderer>().material;

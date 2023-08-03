@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - highlight: {fileID: 2100000, guid: d26d1ed0ee2616b49ab45e75beefe592, type: 2}
+  - player: {fileID: 3348170273881070519, guid: 63990a27e7d51e64483c3f91414977b8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
