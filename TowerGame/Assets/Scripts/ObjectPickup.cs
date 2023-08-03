@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Interactive : MonoBehaviour
 {
+    public string type;
     public abstract void Interact();
 }
 
@@ -78,10 +79,11 @@ public class ObjectPickup : MonoBehaviour
         } 
         else if(pickup != null && Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
         {
-            if(!(pickup.GetComponent<Cauldron>().cauldron == "cauldron"))
+            if(!(pickup.GetComponent<Interactive>().type == "cauldron"))
             {
                 pickup.GetComponent<Interactive>().Interact();
             }
+            
         }
     }
 
