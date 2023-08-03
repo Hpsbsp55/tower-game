@@ -35,7 +35,7 @@ public class Pedestal : MonoBehaviour {
     }
     void RotateItem() {
         if(item != null) {
-            item.transform.Rotate(item.transform.rotation.eulerAngles.x, 60 * Time.deltaTime, item.transform.rotation.eulerAngles.z);
+            item.transform.Rotate(item.transform.rotation.eulerAngles.x, 90 * Time.deltaTime, item.transform.rotation.eulerAngles.z, Space.World);
         }
     }
 }
