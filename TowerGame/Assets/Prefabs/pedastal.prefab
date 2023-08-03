@@ -275,8 +275,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  activated: 0
   index: 0
   player: {fileID: 0}
+  cauldron: {fileID: 1668295457702677033, guid: 60fbda9db7aa6a549869fadd36d15c65, type: 3}
 --- !u!65 &8748264479008900336
 BoxCollider:
   m_ObjectHideFlags: 0

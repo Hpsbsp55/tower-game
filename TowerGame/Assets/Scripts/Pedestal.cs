@@ -12,6 +12,7 @@ public class Pedestal : MonoBehaviour {
     [SerializeField] GameObject player;
     [SerializeField] GameObject cauldron;
     bool win = false;
+    float angle = 0;
     void Start() {
     }
     void Update() {
@@ -48,7 +49,9 @@ public class Pedestal : MonoBehaviour {
     }
     void RotateItem() {
         if(item != null) {
-            item.transform.Rotate(item.transform.rotation.eulerAngles.x, 90 * Time.deltaTime, item.transform.rotation.eulerAngles.z, Space.World);
+            angle += 90 * Time.deltaTime;
+            item.transform.rotation = Quaternion.AngleAxis(angle + 90 * Time.deltaTime,Vector3.up);
+            //item.transform.Rotate(item.transform.rotation.eulerAngles.x, 90 * Time.deltaTime, item.transform.rotation.eulerAngles.z, Space.World);
         }
     }
 }
