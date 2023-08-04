@@ -36,13 +36,11 @@ public class Pedestal : MonoBehaviour {
             player.GetComponent<ObjectPickup>().holdingObj = false;
             activated = true;
             pedestalsActivated[index] = true;
-            Debug.Log(pedestalsActivated);
         }
     }
     void CheckPedestals() {
         if (index == 0 && pedestalsActivated.ToList().All(v => v == true))
         {
-            Debug.Log("Finished");
             win = true;
             Instantiate(cauldron, Vector3.zero, Quaternion.identity);
         }
