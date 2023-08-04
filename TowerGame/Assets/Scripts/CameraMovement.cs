@@ -34,7 +34,8 @@ public class CameraMovement : MonoBehaviour
         VRotation = Mathf.Clamp(VRotation, -90f, 90f);
         transform.localEulerAngles = Vector3.right * VRotation;
         player.transform.Rotate(Vector3.up * lookX);
-        if(Input.GetKeyDown("space") && Physics.CheckSphere(player.position, player.lossyScale.y + 0.1f, ground)) {
+        RaycastHit shit;
+        if (Input.GetKeyDown("space") && Physics.CheckSphere(player.position, player.lossyScale.y + 0.1f, ground) && Physics.SphereCast(player.position, 1, Vector3.down, out shit, 3.1f)) {
             isJumping = true;
         }
     }
