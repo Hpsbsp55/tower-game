@@ -9,7 +9,8 @@ public class EscCheck : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene(0);
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

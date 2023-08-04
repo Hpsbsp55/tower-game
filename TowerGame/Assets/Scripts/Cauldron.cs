@@ -17,6 +17,7 @@ public class Cauldron : Interactive
         {
             SceneManager.LoadScene(2);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     private IEnumerator Rise()
