@@ -21,10 +21,13 @@ public class Pedestal : MonoBehaviour {
             CheckPedestals();
         }
         RotateItem();
+        //string s = "";
         //for (int n = 0; n < 5; n++)
         //{
-        //    Debug.Log(pedestalsActivated[n]);
+            //Debug.Log(pedestalsActivated[n]);
+            //s += ", " + pedestalsActivated[n];
         //}
+        //Debug.Log(s);
     }
     void OnTriggerEnter(Collider other) {
         if(!activated && items.Contains(other.gameObject)) {

@@ -17,4 +17,10 @@ public class Buttons : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Resume()
+    {
+        EscCheck.Instance.gameObject.GetComponent<EscCheck>().canvas.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }

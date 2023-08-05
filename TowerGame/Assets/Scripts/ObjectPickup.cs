@@ -79,10 +79,10 @@ public class ObjectPickup : MonoBehaviour
         } 
         else if(pickup != null && Input.GetKeyDown(KeyCode.Mouse0) && inReach && pickup.tag == "Interactive")
         {
-            if(!(pickup.GetComponent<Interactive>().type == "cauldron"))
-            {
-                pickup.GetComponent<Interactive>().Interact();
-            }
+            //if(!(pickup.GetComponent<Interactive>().type == "cauldron"))
+            //{
+            pickup.GetComponent<Interactive>().Interact();
+            //}
             
         }
     }

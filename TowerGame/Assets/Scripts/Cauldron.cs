@@ -7,18 +7,19 @@ public class Cauldron : Interactive
     // Start is called before the first frame update
     void Start()
     {
+        Pedestal.pedestalsActivated = new bool[5] {false, false, false, false, false};
         StartCoroutine(Rise());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(2);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
+        }*/
     }
     private IEnumerator Rise()
     {
@@ -31,6 +32,9 @@ public class Cauldron : Interactive
 
     public override void Interact()
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene(2);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //throw new System.NotImplementedException();
     }
 }
